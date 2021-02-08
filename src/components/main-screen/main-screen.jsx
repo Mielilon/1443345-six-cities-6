@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '../card/card';
+import Offer from '../offer/offer';
 import PropTypes from 'prop-types';
 
-const MainScreen = ({cards}) => {
+const MainScreen = ({offers}) => {
 
   return (<React.Fragment>
     <div style={{display: `none`}}>
@@ -91,7 +91,7 @@ const MainScreen = ({cards}) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card, i) => <Card key={card.title + i} {...card}/>)}
+                {offers.map((offer, i) => <Offer key={offer.title + i} {...offer}/>)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -106,7 +106,7 @@ const MainScreen = ({cards}) => {
 
 
 MainScreen.propTypes = {
-  cards: PropTypes.array,
+  offers: PropTypes.array,
 };
 
 export default MainScreen;
