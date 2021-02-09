@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({title, price, isPremium, rating, type, image}) => {
+const Offer = ({title, price, isPremium, rating, type, image}) => {
   return (<React.Fragment>
     <article className="cities__place-card place-card">
       {isPremium && (<div className="place-card__mark">
@@ -40,7 +40,7 @@ const Card = ({title, price, isPremium, rating, type, image}) => {
   </React.Fragment>);
 };
 
-Card.propTypes = {
+Offer.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   isPremium: PropTypes.bool.isRequired,
@@ -49,4 +49,4 @@ Card.propTypes = {
   image: PropTypes.string.isRequired,
 };
 
-export default Card;
+export default Offer;

@@ -4,7 +4,7 @@ import App from './components/app/app';
 // import Card from './components/card/card';
 // mport PropTypes from 'prop-types';
 
-const cards = [{
+const offers = [{
   image: `img/apartment-01.jpg`,
   isPremium: true,
   price: 120,
@@ -42,6 +42,6 @@ const cards = [{
 }];
 
 ReactDOM.render(
-    <App cards={cards}/>,
+    <App offers={offers}/>,
     document.getElementById(`root`)
 );
