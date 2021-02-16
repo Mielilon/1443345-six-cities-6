@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
-const Offer = ({title, price, isPremium, rating, type, image}) => {
+const Offer = ({title, price, isPremium, rating, type, previewImage, id}) => {
+
   return (<React.Fragment>
     <article className="cities__place-card place-card">
       {isPremium && (<div className="place-card__mark">
@@ -9,7 +11,7 @@ const Offer = ({title, price, isPremium, rating, type, image}) => {
       </div>)}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={image} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
         </a>
       </div>
       <div className="place-card__info">
@@ -32,7 +34,7 @@ const Offer = ({title, price, isPremium, rating, type, image}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -46,7 +48,8 @@ Offer.propTypes = {
   isPremium: PropTypes.bool.isRequired,
   rating: PropTypes.number,
   type: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  previewImage: PropTypes.string.isRequired,
+  id: PropTypes.number,
 };
 
 export default Offer;

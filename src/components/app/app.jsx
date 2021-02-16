@@ -9,7 +9,7 @@ import OfferPage from '../offer-page/offer-page.jsx';
 import NotFoundScreen from '../not-found-screen/not-found-screen.jsx';
 
 
-const App = ({offers}) => {
+const App = ({offers, reviews, hosts}) => {
   return (
     <React.Fragment>
       <BrowserRouter>
@@ -18,13 +18,13 @@ const App = ({offers}) => {
             <MainScreen offers={offers}/>
           </Route>
           <Route exact path="/favorites">
-            <Favorites />
+            <Favorites offers={offers.filter((offer) => offer.isFavorite === true)}/>
           </Route>
           <Route exact path="/login">
             <Login />
           </Route>
           <Route exact path="/offer/:id">
-            <OfferPage />
+            <OfferPage offers={offers} reviews={reviews} hosts={hosts}/>
           </Route>
           <Route>
             <NotFoundScreen />
@@ -37,6 +37,8 @@ const App = ({offers}) => {
 
 App.propTypes = {
   offers: PropTypes.array,
+  reviews: PropTypes.array,
+  hosts: PropTypes.array,
 };
 
 
