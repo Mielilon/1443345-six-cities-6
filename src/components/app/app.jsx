@@ -23,8 +23,8 @@ const App = ({offers, reviews, hosts}) => {
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route exact path="/offer/:id">
-            <OfferPage offers={offers} reviews={reviews} hosts={hosts}/>
+          <Route exact path="/offer/:id" >
+            { offers.find((offer) => `/offer/` + offer.id === location.pathname) ? <OfferPage offers={offers} reviews={reviews} hosts={hosts}/> : <NotFoundScreen /> }
           </Route>
           <Route>
             <NotFoundScreen />

@@ -114,7 +114,7 @@ const OfferPage = ({offers, reviews, hosts}) => {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                {offers.map((item, i) => <Offer key={item.title + i * 2} {...item}/>)}
+                {offers.filter((item) => item.id !== offer.id).slice(0, 3).map((item, i) => <Offer key={item.title + i * 2} {...item}/>)}
               </div>
             </section>
           </div>
