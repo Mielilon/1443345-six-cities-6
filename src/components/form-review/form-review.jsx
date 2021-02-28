@@ -29,7 +29,8 @@ const FormReview = () => {
   };
 
   const {review, rating} = newReview;
-  const disabled = !(rating > 0 && review.length > 50);
+  const minReviewLenght = 50;
+  const disabled = !(rating > 0 && review.length > minReviewLenght);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>

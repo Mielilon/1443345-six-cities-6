@@ -2,8 +2,8 @@ import React from 'react';
 import {Link, useParams} from "react-router-dom";
 import PropTypes from 'prop-types';
 
-import Review from '../review/review.jsx';
-import FormReview from '../form-review/form-review.jsx';
+import Review from '../review/review';
+import FormReview from '../form-review/form-review';
 import Offer from '../offer/offer';
 
 const OfferPage = ({offers, reviews, hosts}) => {

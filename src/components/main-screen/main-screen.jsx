@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListOfOffers from '../list-of-offers/list-of-offers.jsx';
+import ListOfOffers from '../list-of-offers/list-of-offers';
 
 
 const MainScreen = ({offers}) => {
