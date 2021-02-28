@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListOfOffers from '../list-of-offers/list-of-offers';
-
+import Map from '../map/map';
 
 const MainScreen = ({offers}) => {
 
@@ -71,7 +71,16 @@ const MainScreen = ({offers}) => {
             </ul>
           </section>
         </div>
-        <ListOfOffers offers={offers} />
+        <div className="cities">
+          <div className="cities__places-container container">
+            <ListOfOffers offers={offers} />
+            <div className="cities__right-section">
+              <section className="cities__map map">
+                <Map offers={offers}/>
+              </section>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   </React.Fragment>);
