@@ -7,13 +7,8 @@ import Favorites from '../favorites/favorites';
 import Login from '../login/login';
 import OfferPage from '../offer-page/offer-page';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
+import Routes from "../../const";
 
-const Routes = {
-  MAIN: `/`,
-  FAVORITES: `/favorites`,
-  LOGIN: `/login`,
-  OFFER: `/offer/:id`,
-};
 
 const App = ({offers, reviews, hosts}) => {
   return (
@@ -29,9 +24,13 @@ const App = ({offers, reviews, hosts}) => {
           <Route exact path={Routes.LOGIN}>
             <Login />
           </Route>
-          <Route exact path={Routes.OFFER}>
-            { offers.find((offer) => `/offer/` + offer.id === location.pathname) ? <OfferPage offers={offers} reviews={reviews} hosts={hosts}/> : <NotFoundScreen /> }
-          </Route>
+          <Route exact path={Routes.OFFER} render={({match}) => {
+            if (offers.find((offer) => offer.id === Number(match.params.id))) {
+              return <OfferPage offers={offers} reviews={reviews} hosts={hosts}/>;
+            } else {
+              return <NotFoundScreen />;
+            }
+          }}></Route>
           <Route>
             <NotFoundScreen />
           </Route>

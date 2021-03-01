@@ -30,7 +30,7 @@ const Map = ({offers}) => {
       }).addTo(mapRef.current);
 
 
-    offers.map((offer) => {
+    offers.forEach((offer) => {
       leaflet
           .marker({
             lat: offer.city.location.lat,
@@ -42,11 +42,11 @@ const Map = ({offers}) => {
     return () => {
       mapRef.current.remove();
     };
-  });
+  }, [offers]);
 
 
   return (
-    <div id="map" ref={mapRef}></div>
+    <div id="map" style={{height: `590px`}} ref={mapRef}></div>
   );
 };
 
