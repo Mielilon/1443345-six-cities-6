@@ -15,7 +15,14 @@ export default [{
   he building is green and from 18th century. An independent House, strategically located between Rembrand 
   Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-  city: `Amsterdam`,
+  city: {
+    location: {
+      lat: 52.3909553943508,
+      lng: 4.85309666406198,
+      zoom: 10
+    },
+    name: `Amsterdam`
+  },
   hostId: 1,
 }, {
   id: 2,
@@ -34,7 +41,14 @@ export default [{
   he building is green and from 18th century. An independent House, strategically located between Rembrand 
   Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-  city: `Amsterdam`,
+  city: {
+    location: {
+      lat: 52.369553943508,
+      lng: 4.85309666406198,
+      zoom: 10
+    },
+    name: `Amsterdam`
+  },
   hostId: 1,
 }, {
   id: 3,
@@ -53,7 +67,14 @@ export default [{
   he building is green and from 18th century. An independent House, strategically located between Rembrand 
   Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-  city: `Amsterdam`,
+  city: {
+    location: {
+      lat: 52.3909553943508,
+      lng: 4.929309666406198,
+      zoom: 10
+    },
+    name: `Amsterdam`
+  },
   hostId: 1,
 }, {
   id: 4,
@@ -72,7 +93,14 @@ export default [{
   he building is green and from 18th century. An independent House, strategically located between Rembrand 
   Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-  city: `Amsterdam`,
+  city: {
+    location: {
+      lat: 52.3809553943508,
+      lng: 4.939309666406198,
+      zoom: 10
+    },
+    name: `Amsterdam`
+  },
   hostId: 1,
 }, {
   id: 5,
@@ -91,6 +119,13 @@ export default [{
   he building is green and from 18th century. An independent House, strategically located between Rembrand 
   Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
   goods: [`Heating`, `Kitchen`, `Cable TV`, `Washing machine`, `Coffee machine`, `Dishwasher`],
-  city: `Amsterdam`,
+  city: {
+    location: {
+      lat: 52.3909553943508,
+      lng: 4.85309666406198,
+      zoom: 10
+    },
+    name: `Amsterdam`
+  },
   hostId: 1,
 }];
