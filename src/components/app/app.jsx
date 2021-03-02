@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Provider} from 'react-redux';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
+
+import store from '../../store/store';
 
 import MainScreen from '../main-screen/main-screen';
 import Favorites from '../favorites/favorites';
@@ -12,7 +15,7 @@ import Routes from "../../const";
 
 const App = ({offers, reviews, hosts}) => {
   return (
-    <React.Fragment>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route exact path={Routes.MAIN}>
@@ -36,7 +39,7 @@ const App = ({offers, reviews, hosts}) => {
           </Route>
         </Switch>
       </BrowserRouter>
-    </React.Fragment>
+    </Provider>
   );
 };
 
