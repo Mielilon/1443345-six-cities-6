@@ -2,15 +2,17 @@ import React from 'react';
 import {Link, useParams} from "react-router-dom";
 import PropTypes from 'prop-types';
 
-import Review from '../review/review';
 import FormReview from '../form-review/form-review';
-import Offer from '../offer/offer';
+import ListOfOffersNearby from '../list-of-offers-nearby/list-of-offers-nearby.jsx';
+import ListOfReviews from '../list-of-reviews/list-of-reviews';
+import Map from '../map/map';
 
 const OfferPage = ({offers, reviews, hosts}) => {
   const {id} = useParams();
   const offer = offers.find((item) => +item.id === +id);
   const reviewsId = reviews.filter((review) => review.id === offer.id);
   const host = hosts.find((item) => item.id === offer.hostId);
+  const otherOffers = offers.filter((item) => item.id !== offer.id);
 
   return (
     <React.Fragment>
@@ -103,20 +105,17 @@ const OfferPage = ({offers, reviews, hosts}) => {
                 </div>
                 <section className="property__reviews reviews">
                   <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsId.length}</span></h2>
-                  {reviewsId.map((review, i) => <Review key={review + i} review={reviewsId[i]} />)}
+                  <ListOfReviews reviews={reviewsId}/>
                   <FormReview/>
                 </section>
               </div>
             </div>
-            <section className="property__map map"></section>
+            <section className="property__map map">
+              <Map offers={otherOffers} />
+            </section>
           </section>
           <div className="container">
-            <section className="near-places places">
-              <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <div className="near-places__list places__list">
-                {offers.filter((item) => item.id !== offer.id).slice(0, 3).map((item, i) => <Offer key={item.title + i * 2} {...item}/>)}
-              </div>
-            </section>
+            <ListOfOffersNearby offers={otherOffers}/>
           </div>
         </main>
       </div>
