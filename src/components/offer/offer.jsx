@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
-const Offer = ({title, price, isPremium, rating, type, previewImage, id}) => {
+const Offer = ({title, price, isPremium, rating, type, previewImage, id, onChnageActiveOfferId}) => {
 
   return (<React.Fragment>
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card"
+      onMouseEnter={() => {
+        onChnageActiveOfferId(id);
+      }}
+      onMouseLeave={() => {
+        onChnageActiveOfferId(null);
+      }}>
       {isPremium && (<div className="place-card__mark">
         <span>Premium</span>
       </div>)}
@@ -48,6 +54,7 @@ Offer.propTypes = {
   type: PropTypes.string.isRequired,
   previewImage: PropTypes.string.isRequired,
   id: PropTypes.number,
+  onChnageActiveOfferId: PropTypes.func.isRequired,
 };
 
 export default Offer;

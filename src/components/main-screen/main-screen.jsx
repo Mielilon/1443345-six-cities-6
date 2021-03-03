@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
@@ -12,6 +12,7 @@ import Header from '../header/header.jsx';
 
 
 const MainScreen = ({offers, location, changeLocation}) => {
+  const [activeOfferId, setActiveOfferId] = useState(null);
   const isEmpty = !offers.length;
   return (<React.Fragment>
     <div style={{display: `none`}}>
@@ -26,10 +27,10 @@ const MainScreen = ({offers, location, changeLocation}) => {
         </div>
         <div className="cities">
           <div className="cities__places-container container">
-            <ListOfOffers offers={offers} location={location}/>
+            <ListOfOffers offers={offers} location={location} setActiveOfferId={setActiveOfferId} />
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map offers={offers}/>
+                <Map offers={offers} activeLocation={location} activeOfferId={activeOfferId}/>
               </section>
             </div>
           </div>
@@ -43,7 +44,7 @@ const MainScreen = ({offers, location, changeLocation}) => {
 MainScreen.propTypes = {
   offers: PropTypes.array.isRequired,
   location: PropTypes.string.isRequired,
-  changeLocation: PropTypes.func.isRequired
+  changeLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
