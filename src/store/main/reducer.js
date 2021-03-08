@@ -1,35 +1,36 @@
-import * as types from './types';
-import offersData from '../../mocks/offers.js';
+import {createReducer} from '@reduxjs/toolkit';
+import * as actions from './actions';
+import {Statuses} from '../../services/load-statuses';
 
 const initialState = {
   location: `Paris`,
-  offers: [...offersData],
-  type: `Popular`
+  offers: [],
+  type: `Popular`,
+  loaded: Statuses.PENDING
 };
 
-const mainReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case types.SET_LOCATION:
-      return {
-        ...state,
-        location: action.payload
-      };
-
-    case types.SET_OFFERS:
-      return {
-        ...state,
-        offers: action.payload
-      };
-
-    case types.SET_TYPE:
-      return {
-        ...state,
-        type: action.payload
-      };
-
-    default:
-      return state;
-  }
-};
+const mainReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(actions.setLocation, (state, action) => {
+      state.location = action.payload;
+    })
+    .addCase(actions.setOffers, (state, action) => {
+      state.offers = [...action.payload];
+    })
+    .addCase(actions.setType, (state, action) => {
+      state.type = action.payload;
+    })
+    .addCase(actions.setLoaded, (state, action) => {
+      state.loaded = action.payload;
+    })
+    .addCase(actions.changeOffer, (state, action) => {
+      const index = state.offers.findIndex((offer) => offer.id === action.payload.id);
+      state.offers = [
+        ...state.offers.slice(0, index),
+        action.payload,
+        ...state.offers.slice(index + 1)
+      ];
+    });
+});
 
 export default mainReducer;

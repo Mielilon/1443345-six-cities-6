@@ -1,53 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
-
+import {Router as BrowserRouter, Route, Switch} from 'react-router-dom';
 import store from '../../store/store';
+import OfferPage from '../pages/offer-page/offer-page';
+import FavoritesPage from '../pages/favorites-page/favorites-page';
+import LoginPage from '../pages/login-page/login-page';
+import MainPage from '../pages/main-page/main-page';
+import NotFoundPage from '../pages/not-found-page/not-found-page';
+import PrivateRoute from '../private-route/private-route';
+import browserHistory from '../../browser-history';
+import {checkAuth} from '../../store/app/operations';
+import {loadOffers} from '../../store/main/operations';
 
-import MainScreen from '../main-screen/main-screen';
-import Favorites from '../favorites/favorites';
-import Login from '../login/login';
-import OfferPage from '../offer-page/offer-page';
-import NotFoundScreen from '../not-found-screen/not-found-screen';
-import Routes from "../../const";
+const ROUTES = {
+  offer: `/offer`,
+  favorites: `/favorites`,
+  login: `/login`,
+  main: `/`
+};
 
+const App = () => {
+  store.dispatch(checkAuth());
+  store.dispatch(loadOffers());
 
-const App = ({offers, reviews, hosts}) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter history={browserHistory}>
         <Switch>
-          <Route exact path={Routes.MAIN}>
-            <MainScreen offers={offers}/>
-          </Route>
-          <Route exact path={Routes.FAVORITES}>
-            <Favorites offers={offers.filter((offer) => offer.isFavorite === true)}/>
-          </Route>
-          <Route exact path={Routes.LOGIN}>
-            <Login />
-          </Route>
-          <Route exact path={Routes.OFFER} render={({match}) => {
-            if (offers.find((offer) => offer.id === Number(match.params.id))) {
-              return <OfferPage offers={offers} reviews={reviews} hosts={hosts}/>;
-            } else {
-              return <NotFoundScreen />;
-            }
-          }}></Route>
-          <Route>
-            <NotFoundScreen />
-          </Route>
+          <Route exact path={`${ROUTES.offer}/:id`} component={OfferPage} />
+          <PrivateRoute exact path={ROUTES.favorites} component={FavoritesPage} />
+          <Route exact path={ROUTES.login} component={LoginPage} />
+          <Route exact path={ROUTES.main} component={MainPage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
     </Provider>
   );
 };
-
-App.propTypes = {
-  offers: PropTypes.array,
-  reviews: PropTypes.array,
-  hosts: PropTypes.array,
-};
-
 
 export default App;

@@ -2,7 +2,12 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import {offerPropTypes} from '../../prop-types.prop';
 
+const MAP_TYPES = {
+  main: `cities__map`,
+  offer: `property__map`
+};
 
 const CITIES = {
   Amsterdam: [52.3833, 4.9044],
@@ -33,8 +38,8 @@ const setMarkers = (map, offers, activeOfferId) => {
   offers.forEach((offer) => {
     leaflet
       .marker({
-        lat: offer.city.location.lat,
-        lon: offer.city.location.lng
+        lat: offer.location.latitude,
+        lon: offer.location.longitude
       }, {icon: offer.id === activeOfferId ? ACTIVE_ICON : ICON})
       .addTo(map);
   });
@@ -48,10 +53,10 @@ const removeMarkers = (map) => {
   });
 };
 
-const Map = ({activeLocation, offers, activeOfferId}) => {
+const Map = ({activeLocation, offers, activeOfferId, type}) => {
   const map = useRef();
   const currentCity = CITIES[activeLocation] || activeLocation;
-
+  const currentType = MAP_TYPES[type];
 
   useEffect(() => {
     map.current = leaflet.map(`map`, {
@@ -84,14 +89,17 @@ const Map = ({activeLocation, offers, activeOfferId}) => {
   }, [activeOfferId]);
 
   return (
-    <div id="map" style={{height: `590px`}} ref={map}></div>
+    <section className={`${currentType} map`}>
+      <div id="map" style={{height: `590px`}} ref={map}></div>
+    </section>
   );
 };
 
 Map.propTypes = {
   activeLocation: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
-  offers: PropTypes.array.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.shape(offerPropTypes)),
   activeOfferId: PropTypes.number,
+  type: PropTypes.string.isRequired
 };
 
 export default React.memo(Map);

@@ -1,32 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {reviewPropTypes} from '../../prop-types.prop';
 
-const Review = ({review}) => {
+const RATING_PER_STAR = 20;
 
+const Review = ({comment, date, rating, user}) => {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={user.avatarUrl} width="54" height="54" alt="Reviews avatar" />
         </div>
-        <span className="reviews__user-name">{review.user.name}</span>
+        <span className="reviews__user-name">
+          {user.name}
+        </span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: 20 * review.rating + `%`}}></span>
+            <span style={{width: `${RATING_PER_STAR * rating}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <p className="reviews__text">{review.comment}</p>
-        <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+        <p className="reviews__text">
+          {comment}
+        </p>
+        <time className="reviews__time" dateTime={date}>{new Date(date).toLocaleDateString({month: `long`, day: `numeric`})}</time>
       </div>
     </li>
   );
 };
 
-Review.propTypes = {
-  review: PropTypes.object.isRequired,
-};
+Review.propTypes = reviewPropTypes;
 
 export default Review;
