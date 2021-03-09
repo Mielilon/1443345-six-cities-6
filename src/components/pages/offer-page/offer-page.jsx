@@ -9,11 +9,14 @@ import NearPlaces from '../../near-places/near-places';
 import {getIsLoaded, getNearby, getOffer, getReviews} from '../../../store/offer/selectors';
 import {loadOffer} from '../../../store/offer/operations';
 import withLoading from '../../../hocs/withLoading';
+import {useParams} from 'react-router-dom';
 
-const Offer = ({offer, nearby, reviews, onComponentMount, match}) => {
+const Offer = ({offer, nearby, reviews, onComponentMount}) => {
+  const params = useParams();
+
   useEffect(() => {
-    onComponentMount(match.params.id);
-  }, [match.params.id]);
+    onComponentMount(params.id);
+  }, [params.id]);
 
   return (
     <div className="page">
