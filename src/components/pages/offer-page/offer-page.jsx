@@ -9,7 +9,8 @@ import NearPlaces from '../../near-places/near-places';
 import {getIsLoaded, getNearby, getOffer, getReviews} from '../../../store/offer/selectors';
 import {loadOffer} from '../../../store/offer/operations';
 import withLoading from '../../../hocs/withLoading';
-import {useParams} from 'react-router-dom';
+import NotFoundPage from '../not-found-page/not-found-page';
+import {useParams, Redirect} from 'react-router-dom';
 
 const Offer = ({offer, nearby, reviews, onComponentMount}) => {
   const params = useParams();
@@ -17,6 +18,10 @@ const Offer = ({offer, nearby, reviews, onComponentMount}) => {
   useEffect(() => {
     onComponentMount(params.id);
   }, [params.id]);
+
+  if (offer === null) {
+    return <Redirect to={`/not-found`} component={NotFoundPage}/>;
+  }
 
   return (
     <div className="page">

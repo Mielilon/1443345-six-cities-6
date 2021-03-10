@@ -11,7 +11,7 @@ const Cities = ({offers, location, isEmpty}) => {
     <div className="cities">
       <div className={`cities__places-container container${isEmpty && ` cities__places-container--empty` || ``}`}>
         {isEmpty
-          && <PlacesEmpty />
+          && <PlacesEmpty location={location}/>
           || <Places offers={offers} location={location} setActiveOfferId={setActiveOfferId} />}
         <div className="cities__right-section">
           {!isEmpty
