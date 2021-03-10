@@ -9,11 +9,14 @@ import NearPlaces from '../../near-places/near-places';
 import {getIsLoaded, getNearby, getOffer, getReviews} from '../../../store/offer/selectors';
 import {loadOffer} from '../../../store/offer/operations';
 import withLoading from '../../../hocs/withLoading';
+import {useParams} from 'react-router-dom';
 
-const Offer = ({offer, nearby, reviews, onComponentMount, match}) => {
+const Offer = ({offer, nearby, reviews, loadComponent}) => {
+  const params = useParams();
+
   useEffect(() => {
-    onComponentMount(match.params.id);
-  }, [match.params.id]);
+    loadComponent(params.id);
+  }, [params.id]);
 
   return (
     <div className="page">
@@ -32,7 +35,7 @@ Offer.propTypes = {
   offer: PropTypes.shape(offerPropTypes).isRequired,
   nearby: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
-  onComponentMount: PropTypes.func.isRequired,
+  loadComponent: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired
 };
 
@@ -44,7 +47,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onComponentMount: loadOffer
+  loadComponent: loadOffer
 };
 
 export default compose(

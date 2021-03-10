@@ -2,6 +2,7 @@ import * as actions from './actions';
 import * as mainActions from '../main/actions';
 import {Statuses} from '../../services/load-statuses';
 import {dataToHotelOffer, dataToComment} from '../../services/adapters';
+import browserHistory from '../../browser-history';
 
 const ERROR_TIMEOUT = 5000;
 
@@ -18,7 +19,10 @@ export const loadOffer = (id) => (dispatch, _getState, api) => {
       dispatch(actions.setReviews(reviews.data.map(dataToComment)));
       dispatch(actions.setLoaded(Statuses.LOADED));
     })
-    .catch(() => {
+    .catch((error) => {
+      if (error.response.status === 404) {
+        dispatch(browserHistory.push(`/404`));
+      }
       dispatch(actions.setLoaded(Statuses.ERROR));
     });
 };

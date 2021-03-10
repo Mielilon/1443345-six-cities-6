@@ -10,9 +10,9 @@ import Favorites from '../../favorites/favorites';
 import {loadFavorites} from '../../../store/favorites/operations';
 import withLoading from '../../../hocs/withLoading';
 
-const FavoritesPage = ({offers, onComponentMount}) => {
+const FavoritesPage = ({offers, loadComponent}) => {
   useEffect(() => {
-    onComponentMount();
+    loadComponent();
   }, []);
 
   const isEmpty = !offers.length;
@@ -34,7 +34,7 @@ const FavoritesPage = ({offers, onComponentMount}) => {
 
 FavoritesPage.propTypes = {
   offers: PropTypes.array.isRequired,
-  onComponentMount: PropTypes.func.isRequired
+  loadComponent: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onComponentMount: loadFavorites
+  loadComponent: loadFavorites
 };
 
 export default compose(
