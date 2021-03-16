@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link, useHistory} from 'react-router-dom';
-import withAuth from '../../hocs/withAuth';
+import withAuth from '../../hocs/with-auth/with-auth';
 import {cardPropTypes} from '../../prop-types.prop';
 
 const RATING_PER_STAR = 20;
@@ -68,7 +68,8 @@ const Offer = ({isPremium, previewImage, price, isFavorite, rating, title, id, t
           <button
             className={`place-card__bookmark-button button${isFavorite && ` place-card__bookmark-button--active` || ``}`}
             type="button"
-            onClick={() => isAuth ? onFavoriteClick(id, !isFavorite) : history.push(`/login`)}>
+            onClick={() => isAuth ? onFavoriteClick(id, !isFavorite) : history.push(`/login`)}
+            data-testid="to-bookmarks-button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>

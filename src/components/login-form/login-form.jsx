@@ -15,7 +15,8 @@ const LoginForm = ({onSubmit}) => {
       onSubmit={(evt) => {
         evt.preventDefault();
         onSubmit({email, password});
-      }}>
+      }}
+      data-testid="form">
       <div className="login__input-wrapper form__input-wrapper">
         <label className="visually-hidden">E-mail</label>
         <input
@@ -28,7 +29,8 @@ const LoginForm = ({onSubmit}) => {
           value={email}
           onChange={(evt) => {
             setEmail(evt.target.value);
-          }}/>
+          }}
+          data-testid="email" />
       </div>
       <div className="login__input-wrapper form__input-wrapper">
         <label className="visually-hidden">Password</label>
@@ -42,7 +44,8 @@ const LoginForm = ({onSubmit}) => {
           value={password}
           onChange={(evt) => {
             setPassword(evt.target.value);
-          }}/>
+          }}
+          data-testid="password" />
       </div>
       <button className="login__submit form__submit button" type="submit">Sign in</button>
     </form>
@@ -58,3 +61,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(null, mapDispatchToProps)(LoginForm);
+export {
+  LoginForm as PureLoginForm
+};

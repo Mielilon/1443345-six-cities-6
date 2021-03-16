@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Locations component test 'Locations component' should render correctly 1`] = `
+<div>
+  <section
+    class="locations container"
+  >
+    <ul
+      class="locations__list tabs__list"
+    >
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item tabs__item--active"
+          data-testid="tab-link"
+        >
+          <span>
+            Paris
+          </span>
+        </a>
+      </li>
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item"
+          data-testid="tab-link"
+        >
+          <span>
+            Cologne
+          </span>
+        </a>
+      </li>
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item"
+          data-testid="tab-link"
+        >
+          <span>
+            Brussels
+          </span>
+        </a>
+      </li>
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item"
+          data-testid="tab-link"
+        >
+          <span>
+            Amsterdam
+          </span>
+        </a>
+      </li>
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item"
+          data-testid="tab-link"
+        >
+          <span>
+            Hamburg
+          </span>
+        </a>
+      </li>
+      <li
+        class="locations__item"
+      >
+        <a
+          class="locations__item-link tabs__item"
+          data-testid="tab-link"
+        >
+          <span>
+            Dusseldorf
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
