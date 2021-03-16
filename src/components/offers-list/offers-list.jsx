@@ -14,8 +14,12 @@ const OffersList = ({offers, offerType, onChnageActiveOfferId = () => {}, onFavo
   return (
     <div className={OFFER_TYPES[offerType]}>
       {offers.map((offer) =>
-        <Offer offerType={offerType} key={offer.id} onChnageActiveOfferId={changeActiveOfferIdHandler}
-          onFavoriteClick={onFavoriteClick} {...offer} />)}
+        <Offer
+          offerType={offerType}
+          key={offer.id}
+          onChnageActiveOfferId={changeActiveOfferIdHandler}
+          onFavoriteClick={onFavoriteClick}
+          {...offer} />)}
     </div>
   );
 };

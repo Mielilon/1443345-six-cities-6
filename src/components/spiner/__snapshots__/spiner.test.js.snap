@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spiner component test Spiner component' should render correctly 1`] = `
+<div>
+  <div
+    class="spin-container"
+  >
+    <div
+      class="spiner"
+    >
+      <div
+        aria-hidden="true"
+      />
+      <div
+        aria-hidden="true"
+      />
+      <div
+        aria-hidden="true"
+      />
+    </div>
+  </div>
+</div>
+`;

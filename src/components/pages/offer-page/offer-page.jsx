@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import {useParams} from 'react-router';
 import PropTypes from 'prop-types';
 import {offerPropTypes} from '../../../prop-types.prop';
 import Header from '../../header/header';
@@ -8,10 +9,9 @@ import OfferInfo from '../../offer-info/offer-info';
 import NearPlaces from '../../near-places/near-places';
 import {getIsLoaded, getNearby, getOffer, getReviews} from '../../../store/offer/selectors';
 import {loadOffer} from '../../../store/offer/operations';
-import withLoading from '../../../hocs/withLoading';
-import {useParams} from 'react-router-dom';
+import withLoading from '../../../hocs/with-loading/with-loading';
 
-const Offer = ({offer, nearby, reviews, loadComponent}) => {
+const OfferPage = ({offer, nearby, reviews, loadComponent}) => {
   const params = useParams();
 
   useEffect(() => {
@@ -31,12 +31,11 @@ const Offer = ({offer, nearby, reviews, loadComponent}) => {
   );
 };
 
-Offer.propTypes = {
+OfferPage.propTypes = {
   offer: PropTypes.shape(offerPropTypes).isRequired,
   nearby: PropTypes.array.isRequired,
   reviews: PropTypes.array.isRequired,
-  loadComponent: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired
+  loadComponent: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -53,4 +52,4 @@ const mapDispatchToProps = {
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     withLoading
-)(Offer);
+)(OfferPage);

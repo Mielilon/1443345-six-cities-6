@@ -9,6 +9,7 @@ export const getOffers = createSelector(
     [getLocation, getAllOffers, getType],
     (location, offers, type) => {
       const suitableOffers = offers.filter((offer) => offer.city.name === location);
+
       switch (type) {
         case `Price: high to low`:
           return suitableOffers.sort((a, b) => b.price - a.price);

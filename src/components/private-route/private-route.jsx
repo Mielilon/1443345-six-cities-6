@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
-import withAuth from '../../hocs/withAuth';
+import withAuth from '../../hocs/with-auth/with-auth';
 
 const PrivateRoute = ({component: Component, isAuth, ...params}) => {
   return (
@@ -11,7 +11,7 @@ const PrivateRoute = ({component: Component, isAuth, ...params}) => {
 
 PrivateRoute.propTypes = {
   isAuth: PropTypes.bool.isRequired,
-  component: PropTypes.object.isRequired,
+  component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
 };
 
 export default withAuth(PrivateRoute);

@@ -32,7 +32,8 @@ const ReviewForm = ({onSubmit, isLoaded}) => {
       onSubmit={(evt) => {
         evt.preventDefault();
         onSubmit(id, review, rating);
-      }}>
+      }}
+      data-testid="form">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {Array(5).fill(``).map((_, index) =>
@@ -66,7 +67,8 @@ const ReviewForm = ({onSubmit, isLoaded}) => {
           setReview(evt.target.value);
         }}
         maxLength={REVIEW_SIZING.max}
-        disabled={isLoaded === Statuses.LOAD}></textarea>
+        disabled={isLoaded === Statuses.LOAD}
+        data-testid="review"></textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
@@ -95,3 +97,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);
+export {
+  ReviewForm as PureReviewForm
+};
