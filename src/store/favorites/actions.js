@@ -1,7 +1,7 @@
 import {createAction} from '@reduxjs/toolkit';
 import * as types from './types';
 
-export const setOffers = createAction(types.SET_OFFERS, (offers) => {
+export const setOffers = createAction(types.OFFERS_SET, (offers) => {
   return {
     payload: offers
   };

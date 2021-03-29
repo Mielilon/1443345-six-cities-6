@@ -11,9 +11,7 @@ const Locations = ({activeLocation, changeLocation}) => {
           <li className="locations__item" key={`location-${index}`}>
             <a
               className={`locations__item-link tabs__item${location === activeLocation && ` tabs__item--active` || ``}`}
-              onClick={() => {
-                changeLocation(location);
-              }}
+              onClick={changeLocation.bind(null, location)}
               data-testid="tab-link">
               <span>{location}</span>
             </a>

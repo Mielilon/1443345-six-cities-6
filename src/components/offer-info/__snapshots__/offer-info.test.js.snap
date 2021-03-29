@@ -360,7 +360,7 @@ exports[`OfferInfo component test OfferInfo component' should render correctly 1
       <div
         class="leaflet-container leaflet-grab leaflet-touch-drag"
         id="map"
-        style="height: 590px; position: relative;"
+        style="height: 100%; position: relative;"
         tabindex="0"
       >
         <div

@@ -1,10 +1,10 @@
 import {createReducer} from '@reduxjs/toolkit';
 import * as actions from './actions';
-import {Statuses} from '../../services/load-statuses';
+import {Status} from '../../services/load-statuses';
 
 const initialState = {
   offers: [],
-  loaded: Statuses.PENDING
+  loaded: Status.PENDING
 };
 
 const favoritesReducer = createReducer(initialState, (builder) => {

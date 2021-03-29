@@ -90,7 +90,7 @@ const Map = ({activeLocation, offers, activeOfferId, type}) => {
 
   return (
     <section className={`${currentType} map`}>
-      <div id="map" style={{height: `590px`}} ref={map}></div>
+      <div id="map" style={{height: `100%`}} ref={map}></div>
     </section>
   );
 };

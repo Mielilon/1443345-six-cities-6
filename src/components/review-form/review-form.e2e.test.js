@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import {fireEvent, render} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {TestHistory as Test} from '../test/test';
-import {Statuses} from '../../services/load-statuses';
+import {Status} from '../../services/load-statuses';
 
 import {PureReviewForm as ReviewForm} from './review-form';
 
@@ -13,7 +13,7 @@ describe(`ReviewForm component e2e test`, () => {
 
     const {getByTestId, getByDisplayValue} = render(
         <Test>
-          <ReviewForm onSubmit={jest.fn()} isLoaded={Statuses.LOADED} />
+          <ReviewForm onSubmit={jest.fn()} isLoaded={Status.LOADED} />
         </Test>
     );
 
@@ -22,15 +22,15 @@ describe(`ReviewForm component e2e test`, () => {
   });
 
   it(`LoginForm component' should call callback when submit form`, () => {
-    const handlerOnSubmit = jest.fn();
+    const handleOnSubmit = jest.fn();
 
     const {getByTestId} = render(
         <Test>
-          <ReviewForm onSubmit={handlerOnSubmit} isLoaded={Statuses.LOADED} />
+          <ReviewForm onSubmit={handleOnSubmit} isLoaded={Status.LOADED} />
         </Test>
     );
 
     fireEvent.submit(getByTestId(`form`));
-    expect(handlerOnSubmit).toHaveBeenCalled();
+    expect(handleOnSubmit).toHaveBeenCalled();
   });
 });
