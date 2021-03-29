@@ -19,11 +19,11 @@ describe(`LoginForm component e2e test`, () => {
   });
 
   it(`LoginForm component' should call callback when submit form`, () => {
-    const handlerOnSubmit = jest.fn();
+    const handleOnSubmit = jest.fn();
 
-    const {getByTestId} = render(<LoginForm onSubmit={handlerOnSubmit} />);
+    const {getByTestId} = render(<LoginForm onSubmit={handleOnSubmit} />);
 
     fireEvent.submit(getByTestId(`form`));
-    expect(handlerOnSubmit).toHaveBeenCalled();
+    expect(handleOnSubmit).toHaveBeenCalled();
   });
 });

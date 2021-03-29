@@ -14,7 +14,7 @@ describe(`Main action creators work correctly`, () => {
 
   it(`setOffers action creator returns correct action`, () => {
     const expectedAction = {
-      type: types.SET_OFFERS,
+      type: types.OFFERS_SET,
       payload: simpleMock
     };
 

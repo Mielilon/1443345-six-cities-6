@@ -7,7 +7,7 @@ import {offersFull, comments} from '../../tests-mock';
 
 describe(`OfferInfo component e2e test`, () => {
   it(`OfferInfo component' should call callback when click on 'to-bookmarks' button`, () => {
-    const handlerFavoriteClick = jest.fn();
+    const handleFavoriteClick = jest.fn();
 
     const {getByTestId} = render(
         <Test initial={false}>
@@ -15,12 +15,12 @@ describe(`OfferInfo component e2e test`, () => {
             offer={offersFull.adapted[0]}
             reviews={comments.adapted}
             mapPlaces={offersFull.adapted}
-            onFavoriteClick={handlerFavoriteClick} />
+            onFavoriteClick={handleFavoriteClick} />
         </Test>
     );
 
     fireEvent.click(getByTestId(`to-bookmarks`));
-    expect(handlerFavoriteClick).toHaveBeenCalled();
+    expect(handleFavoriteClick).toHaveBeenCalled();
   });
 });
 

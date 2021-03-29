@@ -3,7 +3,7 @@ import {createAPI} from '../../services/api';
 import * as operations from './operations';
 import * as types from './types';
 import {offersFull} from '../../tests-mock';
-import {Statuses} from '../../services/load-statuses';
+import {Status} from '../../services/load-statuses';
 
 const api = createAPI(() => {});
 
@@ -22,15 +22,15 @@ describe(`Main async operation work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: types.SET_LOADED,
-          payload: Statuses.LOAD
+          payload: Status.LOAD
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: types.SET_OFFERS,
+          type: types.OFFERS_SET,
           payload: offersFull.adapted,
         });
         expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: types.SET_LOADED,
-          payload: Statuses.LOADED
+          payload: Status.LOADED
         });
       });
   });

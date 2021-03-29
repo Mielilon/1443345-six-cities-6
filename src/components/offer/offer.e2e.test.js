@@ -10,53 +10,53 @@ describe(`Offer component e2e test`, () => {
   const offer = offersFull.adapted[0];
 
   it(`'Offer component' should call callback when mouse enter component`, () => {
-    const handlerMouseEnter = jest.fn();
+    const handleMouseEnter = jest.fn();
 
     const {container} = render(
         <Test>
           <Offer
             offerType={type}
-            onChnageActiveOfferId={handlerMouseEnter}
+            onChnageActiveOfferId={handleMouseEnter}
             onFavoriteClick={jest.fn()}
             {...offer} />
         </Test>
     );
 
     fireEvent.mouseEnter(container.firstChild);
-    expect(handlerMouseEnter).toHaveBeenCalled();
+    expect(handleMouseEnter).toHaveBeenCalled();
   });
 
   it(`'Offer component' should call callback when mouse leave component`, () => {
-    const handlerMouseLeave = jest.fn();
+    const handleMouseLeave = jest.fn();
 
     const {container} = render(
         <Test>
           <Offer
             offerType={type}
-            onChnageActiveOfferId={handlerMouseLeave}
+            onChnageActiveOfferId={handleMouseLeave}
             onFavoriteClick={jest.fn()}
             {...offer} />
         </Test>
     );
 
     fireEvent.mouseLeave(container.firstChild);
-    expect(handlerMouseLeave).toHaveBeenCalled();
+    expect(handleMouseLeave).toHaveBeenCalled();
   });
 
   it(`'Offer component' should call callback when click on 'To bookmarks' button`, () => {
-    const handlerFavoriteClick = jest.fn();
+    const handleFavoriteClick = jest.fn();
 
     const {getByTestId} = render(
         <Test initial={false}>
           <Offer
             offerType={type}
             onChnageActiveOfferId={jest.fn}
-            onFavoriteClick={handlerFavoriteClick}
+            onFavoriteClick={handleFavoriteClick}
             {...offer} />
         </Test>
     );
 
     fireEvent.click(getByTestId(`to-bookmarks-button`));
-    expect(handlerFavoriteClick).toHaveBeenCalled();
+    expect(handleFavoriteClick).toHaveBeenCalled();
   });
 });

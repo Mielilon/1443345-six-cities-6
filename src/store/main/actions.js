@@ -7,7 +7,7 @@ export const setLocation = createAction(types.SET_LOCATION, (location) => {
   };
 });
 
-export const setOffers = createAction(types.SET_OFFERS, (offers) => {
+export const setOffers = createAction(types.OFFERS_SET, (offers) => {
   return {
     payload: offers
   };
