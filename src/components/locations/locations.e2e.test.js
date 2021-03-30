@@ -6,11 +6,11 @@ import Locations from './locations';
 describe(`Locations component e2e test`, () => {
   it(`'Locations component' should call callback when click on 'tab-link' link`, () => {
     const activeLocation = `Paris`;
-    const handlerChangeLocation = jest.fn();
+    const handleChangeLocation = jest.fn();
 
-    const {getAllByTestId} = render(<Locations activeLocation={activeLocation} changeLocation={handlerChangeLocation} />);
+    const {getAllByTestId} = render(<Locations activeLocation={activeLocation} changeLocation={handleChangeLocation} />);
 
     fireEvent.click(getAllByTestId(`tab-link`)[0]);
-    expect(handlerChangeLocation).toHaveBeenCalled();
+    expect(handleChangeLocation).toHaveBeenCalled();
   });
 });

@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit';
 import * as actions from './actions';
-import {Statuses} from '../../services/load-statuses';
+import {Status} from '../../services/load-statuses';
 
 const initialState = {
   offer: {
@@ -31,8 +31,8 @@ const initialState = {
   },
   nearby: [],
   reviews: [],
-  loaded: Statuses.PENDING,
-  reviewLoaded: Statuses.PENDING
+  loaded: Status.PENDING,
+  reviewLoaded: Status.PENDING
 };
 
 const offerReducer = createReducer(initialState, (builder) => {

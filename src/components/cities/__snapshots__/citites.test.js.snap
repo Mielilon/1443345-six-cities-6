@@ -417,7 +417,7 @@ exports[`Cities component test 'Cities component' should render correctly with o
           <div
             class="leaflet-container leaflet-grab leaflet-touch-drag"
             id="map"
-            style="height: 590px; position: relative;"
+            style="height: 100%; position: relative;"
             tabindex="0"
           >
             <div

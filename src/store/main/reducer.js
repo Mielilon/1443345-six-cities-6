@@ -1,12 +1,12 @@
 import {createReducer} from '@reduxjs/toolkit';
 import * as actions from './actions';
-import {Statuses} from '../../services/load-statuses';
+import {Status} from '../../services/load-statuses';
 
 const initialState = {
   location: `Paris`,
   offers: [],
   type: `Popular`,
-  loaded: Statuses.PENDING
+  loaded: Status.PENDING
 };
 
 const mainReducer = createReducer(initialState, (builder) => {

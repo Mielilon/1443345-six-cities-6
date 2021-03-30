@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Link, useHistory} from 'react-router-dom';
 import withAuth from '../../hocs/with-auth/with-auth';
@@ -38,6 +38,10 @@ const OFFER_TYPES = {
 const Offer = ({isPremium, previewImage, price, isFavorite, rating, title, id, type, offerType, onChnageActiveOfferId, onFavoriteClick, isAuth}) => {
   const offerTypeOptions = OFFER_TYPES[offerType];
   const history = useHistory();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <article

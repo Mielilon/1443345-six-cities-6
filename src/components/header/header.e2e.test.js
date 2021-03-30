@@ -7,19 +7,19 @@ import {auth} from '../../tests-mock';
 
 describe(`Header component e2e test`, () => {
   it(`Header component' should call callback when click on 'logout' button`, () => {
-    const handlerOnLogout = jest.fn();
+    const handleOnLogout = jest.fn();
 
     const {getByTestId} = render(
         <Test>
           <Header
             isAuth={true}
             user={auth.adapted}
-            onLogout={handlerOnLogout} />
+            onLogout={handleOnLogout} />
         </Test>
     );
 
     fireEvent.click(getByTestId(`logout`));
-    expect(handlerOnLogout).toHaveBeenCalled();
+    expect(handleOnLogout).toHaveBeenCalled();
   });
 });
 
