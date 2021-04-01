@@ -10,6 +10,7 @@ import withAuth from '../../hocs/with-auth/with-auth';
 import {changeFavorite} from '../../store/offer/operations';
 
 const RATING_PER_STAR = 20;
+const maxImages = 6;
 
 const OfferInfo = ({offer, reviews, mapPlaces, onFavoriteClick, isAuth}) => {
   const {images, isPremium, title, isFavorite, rating, type, bedrooms, maxAdults, price, goods, host, description, id, location} = offer;
@@ -19,7 +20,7 @@ const OfferInfo = ({offer, reviews, mapPlaces, onFavoriteClick, isAuth}) => {
     <section className="property">
       <div className="property__gallery-container container">
         <div className="property__gallery">
-          {images.slice(0, 6).map((image, index) => (
+          {images.slice(0, maxImages).map((image, index) => (
             <div className="property__image-wrapper" key={`property-image-${index}`}>
               <img className="property__image" src={image} alt="Photo studio" />
             </div>
